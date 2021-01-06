@@ -1,1 +1,1 @@
-// export { Module } from "./Module"
+export { PubSubHandler } from "./pubsub/PubSubHandler"
