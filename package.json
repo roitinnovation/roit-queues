@@ -1,5 +1,5 @@
 {
-  "name": "roit-base-lib",
+  "name": "roit-queues",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "src/index.ts",
@@ -19,8 +19,8 @@
     "mocha": "^6.2.0"
   },
   "dependencies": {
-    
+    "@google-cloud/pubsub": "^2.7.0",
+    "roit-environment": "^1.1.1"
   },
-  "keywords": [
-  ]
+  "keywords": []
 }
