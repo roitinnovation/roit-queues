@@ -1,5 +1,5 @@
 {
-  "name": "roit-queues",
+  "name": "@roit/roit-queues",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "src/index.ts",
@@ -8,7 +8,7 @@
     "deploy": "npm run build && npm test && npm publish --access public --scope=roit",
     "test": "mocha --timeout 15000 -r ts-node/register test/**/*.spec.ts"
   },
-  "author": "Author",
+  "author": "ROIT INNOVATION",
   "devDependencies": {
     "@types/chai": "^4.2.0",
     "@types/mocha": "^5.2.7",
