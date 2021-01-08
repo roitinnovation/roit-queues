@@ -5,7 +5,7 @@ import { PubSubConfig } from './PubSubConfig'
 export class PubSubHandler implements PublisherInterface {
 
     private readonly instance: PubSub
-    private readonly config: PubSubConfig
+    private readonly config: PubSubConfig = new PubSubConfig()
 
     constructor() {
         this.instance = new PubSub(this.config.getConfig())

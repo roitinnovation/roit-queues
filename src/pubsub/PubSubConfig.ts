@@ -9,7 +9,7 @@ export class PubSubConfig implements BrokerConfigInterface {
 
     constructor() {
         this.projectId = Environment.getProperty('projectId')
-        const credentialFile = Environment.getProperty('credential')
+        const credentialFile = Environment.getProperty('pubSubCredential')
         this.credentials = require(credentialFile)
     }
 
