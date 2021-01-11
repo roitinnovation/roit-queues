@@ -12,6 +12,10 @@ private readonly pubSubHandler: PubSubHandler
 
 Use publish method:
 ```
-const messageId = await this.pubSubHandler.publish(Buffer.from('myMessage'), 'myTopic')
+const myObject = {
+    // properties
+}
+
+const messageId = await this.pubSubHandler.publish(myObject, 'myTopic')
 console.log(messageId) // outputs 234786275
 ```
