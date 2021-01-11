@@ -1,5 +1,5 @@
 import { PubSub } from '@google-cloud/pubsub'
-import { PublisherInterface } from "../PublisherInterface"
+import { PublisherInterface } from "../interfaces/PublisherInterface"
 import { PubSubConfig } from './PubSubConfig'
 
 export class PubSubHandler implements PublisherInterface {
@@ -15,7 +15,8 @@ export class PubSubHandler implements PublisherInterface {
         return this.instance
     }
 
-    async publish(message: Buffer, topicName: string): Promise<string> {
+    async publish(object: any, topicName: string): Promise<string> {
+        const message = Buffer.from(JSON.stringify(object))
         const messageId = await this.getInstance().topic(topicName).publish(message).catch(err => {
             console.error(err)
             throw new Error('Error in PubSub publish method.')
