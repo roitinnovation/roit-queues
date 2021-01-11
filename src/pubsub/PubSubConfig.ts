@@ -1,5 +1,5 @@
 import { Environment } from 'roit-environment'
-import { BrokerConfigInterface } from '../BrokerConfigInterface'
+import { BrokerConfigInterface } from '../interfaces/BrokerConfigInterface'
 
 export class PubSubConfig implements BrokerConfigInterface {
     //@ts-ignore
