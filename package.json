@@ -1,14 +1,13 @@
 {
   "name": "@roit/roit-queues",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "repository": "github:roitinnovation/roit-queues",
   "homepage": "https://github.com/roitinnovation/roit-queues#readme",
   "scripts": {
     "build": "tsc --incremental -p tsconfig.build.json",
-    "deploy": "npm run build && npm test && npm publish --access public --scope=roit",
-    "test": "mocha --timeout 15000 -r ts-node/register test/**/*.spec.ts"
+    "deploy": "npm run build && npm publish --access public --scope=roit"
   },
   "author": "ROIT INNOVATION",
   "devDependencies": {
