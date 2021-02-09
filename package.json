@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@google-cloud/pubsub": "^2.7.0",
+    "@google-cloud/tasks": "^2.3.0",
     "roit-environment": "^1.1.1"
   },
   "keywords": [
