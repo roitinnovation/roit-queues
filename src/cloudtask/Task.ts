@@ -1,8 +1,8 @@
 import { TaskConfiguration } from "./TaskConfiguration"
 
 export class Task {
-    httpRequest: HttpRequest
-    scheduleTime: ScheduleTime
+    httpRequest: HttpRequest = new HttpRequest()
+    scheduleTime: ScheduleTime = new ScheduleTime()
 
     constructor(taskOptions: TaskConfiguration, serviceAccountEmail: string) {
         this.httpRequest.headers = taskOptions.headers
@@ -18,7 +18,7 @@ class HttpRequest {
     url: string
     body: string
     headers: unknown
-    oidcToken: OidcToken
+    oidcToken: OidcToken = new OidcToken()
 }
 
 class OidcToken {
