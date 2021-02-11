@@ -10,6 +10,7 @@ export class Task {
         this.httpRequest.httpMethod = taskOptions.httpMethod
         this.scheduleTime.seconds = taskOptions.scheduleTime
         this.httpRequest.oidcToken.serviceAccountEmail = serviceAccountEmail
+        this.httpRequest.body = Buffer.from(JSON.stringify(taskOptions.body)).toString('base64')
     }
 }
 
