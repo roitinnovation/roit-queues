@@ -35,7 +35,7 @@ In the `env.yaml` file add the `cloudTaskCredencial{}` and `projectId` attribute
 
 ```yaml
 dev:
-    cloudTaskCredencial{5}: my-credential.json
+    cloudTaskCredential{5}: my-credential.json
     projectId: my-project-id
 ```
 
