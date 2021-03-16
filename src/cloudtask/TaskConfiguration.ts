@@ -3,7 +3,12 @@ export interface TaskConfiguration {
     httpMethod: string | any
     region: string | 'us-central1'
     queue: string
-    scheduleTime: number
+    scheduleTime: {
+        seconds?: number
+        nanos?: number
+        dateExecute?: string
+        executeAt?: string
+    }
     headers: unknown
     body: unknown
 }
