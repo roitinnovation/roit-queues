@@ -4,11 +4,11 @@ export class Task {
     httpRequest: HttpRequest = new HttpRequest()
     scheduleTime: ScheduleTime = new ScheduleTime()
 
-    constructor(taskOptions: TaskConfiguration, serviceAccountEmail: string) {
+    constructor(taskOptions: TaskConfiguration, seconds: number, serviceAccountEmail: string) {
         this.httpRequest.headers = taskOptions.headers
         this.httpRequest.url = taskOptions.url
         this.httpRequest.httpMethod = taskOptions.httpMethod
-        this.scheduleTime.seconds = taskOptions.scheduleTime
+        this.scheduleTime.seconds = seconds
         this.httpRequest.oidcToken.serviceAccountEmail = serviceAccountEmail
         this.httpRequest.body = Buffer.from(JSON.stringify(taskOptions.body)).toString('base64')
     }
