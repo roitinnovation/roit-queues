@@ -48,6 +48,17 @@ constructor(
 ) {}
 ```
 
+Schedule Time params:
+```typescript
+scheduleTime: {
+    seconds?: number
+    nanos?: number
+    dateExecute?: string // Use moment formats: https://www.npmjs.com/package/moment
+    executeAt?: string // Use ms formats: https://www.npmjs.com/package/ms
+}
+```
+
+
 Use the `createTask` method:
 ```typescript
 import { TaskConfiguration } from '@roit/roit-queues'
@@ -57,7 +68,9 @@ const myTask: TaskConfiguration = {
     httpMethod: 'POST',
     region: 'us-central1',
     queue: 'my-queue',
-    scheduleTime: '1000',
+    scheduleTime: {
+        seconds: 3600   
+    },
     headers: MyHeadersObject,
     body: MyPayloadObject
 }
