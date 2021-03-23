@@ -50,6 +50,6 @@ export class CloudTaskProvider {
             seconds = taskOptions.scheduleTime.seconds
         }
 
-        return seconds
+        return seconds + Date.now() / 1000
     }
 }
