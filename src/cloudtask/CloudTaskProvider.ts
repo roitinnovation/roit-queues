@@ -5,6 +5,7 @@ import { Task } from "./Task";
 import { TaskConfiguration } from "./TaskConfiguration";
 import * as moment from "moment"
 import ms = require("ms");
+import { TaskDelete } from "./TaskDelete";
 
 export class CloudTaskProvider {
     private instance: CloudTasksClient
@@ -29,6 +30,10 @@ export class CloudTaskProvider {
         const parent = this.instance.queuePath(this.projectId, region, queue)
         const [response] = await this.instance.createTask({ parent, task } as google.cloud.tasks.v2.ICreateTaskRequest)
         return response
+    }
+
+    async deleteTask(taskId: TaskDelete): Promise<void> {
+        await this.instance.deleteTask(taskId)
     }
 
     buildScheduleTime(taskOptions: TaskConfiguration): number {
