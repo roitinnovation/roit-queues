@@ -5,7 +5,6 @@ import { Task } from "./Task";
 import { TaskConfiguration } from "./TaskConfiguration";
 import * as moment from "moment"
 import ms = require("ms");
-import { TaskDelete } from "./TaskDelete";
 
 export class CloudTaskProvider {
     private instance: CloudTasksClient
@@ -32,8 +31,9 @@ export class CloudTaskProvider {
         return response
     }
 
-    async deleteTask(taskId: TaskDelete): Promise<void> {
-        await this.instance.deleteTask(taskId)
+    async deleteTask(queue: string, task: string): Promise<void> {
+        const name = this.instance.queuePath(this.projectId, 'us-central1', `${queue}/tasks/${task}`)
+        await this.instance.deleteTask({ name })
     }
 
     buildScheduleTime(taskOptions: TaskConfiguration): number {
