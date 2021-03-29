@@ -8,9 +8,11 @@ export class PubSubConfig implements BrokerConfigInterface {
     private readonly credentials: { private_key: string, client_email: string }
 
     constructor() {
-        this.projectId = Environment.getProperty('projectId')
         const credentialFile = Environment.getProperty('pubSubCredential')
-        this.credentials = require(credentialFile)
+        if (credentialFile) {
+            this.projectId = Environment.getProperty('projectId')
+            this.credentials = require(credentialFile)
+        }
     }
 
     getConfig(): any {

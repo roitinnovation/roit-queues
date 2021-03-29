@@ -5,10 +5,15 @@ import { PubSubConfig } from './PubSubConfig'
 export class PubSubHandler implements PublisherInterface {
 
     private readonly instance: PubSub
-    private readonly config: PubSubConfig = new PubSubConfig()
+    private readonly pubSubConfig: PubSubConfig = new PubSubConfig()
 
     constructor() {
-        this.instance = new PubSub(this.config.getConfig())
+        const config = this.pubSubConfig.getConfig()
+        if (config) {
+            this.instance = new PubSub(config)
+        } else {
+            this.instance = new PubSub()
+        }
     }
 
     getInstance() {
@@ -19,7 +24,7 @@ export class PubSubHandler implements PublisherInterface {
         const message = Buffer.from(JSON.stringify(object))
         const messageId = await this.getInstance().topic(topicName).publish(message).catch(err => {
             console.error(err)
-            throw new Error('Error in PubSub publish method.')
+            throw new Error('Error in PubSub publish method.')s
         }).then(response => {
             return response
         })

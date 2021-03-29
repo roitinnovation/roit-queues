@@ -13,13 +13,17 @@ export class CloudTaskProvider {
 
     constructor() {
         const credentialPath = Environment.getProperty('cloudTaskCredential')
-        const projectId = Environment.getProperty('projectId')
-        const credential = require(credentialPath)
-        this.projectId = projectId
-        this.serviceAccountEmail = credential.client_email
-        this.instance = new CloudTasksClient({
-            credentials: credential
-        })
+        if (credentialPath) {
+            const projectId = Environment.getProperty('projectId')
+            const credential = require(credentialPath)
+            this.projectId = projectId
+            this.serviceAccountEmail = credential.client_email
+            this.instance = new CloudTasksClient({
+                credentials: credential
+            })
+        } else {
+            this.instance = new CloudTasksClient()
+        }
     }
 
     async createTask(taskOptions: TaskConfiguration): Promise<google.cloud.tasks.v2.ITask> {
