@@ -1,6 +1,6 @@
 {
   "name": "@roit/roit-queues",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "repository": "github:roitinnovation/roit-queues",
@@ -18,7 +18,7 @@
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
     "ts-node": "^8.3.0",
-    "typescript": "3.7.4"
+    "typescript": "^3.8.0"
   },
   "dependencies": {
     "@google-cloud/pubsub": "^2.7.0",
