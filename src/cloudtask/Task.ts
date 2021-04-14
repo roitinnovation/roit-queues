@@ -14,7 +14,7 @@ export class Task {
     }
 }
 
-export type ITask = protos.google.cloud.tasks.v2.Task;
+export type ITask = protos.google.cloud.tasks.v2.ITask;
 
 class HttpRequest {
     httpMethod: string
