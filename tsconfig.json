@@ -12,7 +12,8 @@
         "incremental": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
+        "esModuleInterop": true
     },
     "include": [
         "src/**/*.ts",
