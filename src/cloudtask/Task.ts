@@ -1,3 +1,4 @@
+import { protos } from "@google-cloud/tasks"
 import { TaskConfiguration } from "./TaskConfiguration"
 
 export class Task {
@@ -13,6 +14,8 @@ export class Task {
         this.httpRequest.body = Buffer.from(JSON.stringify(taskOptions.body)).toString('base64')
     }
 }
+
+export type ITask = protos.google.cloud.tasks.v2.Task;
 
 class HttpRequest {
     httpMethod: string
