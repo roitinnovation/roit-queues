@@ -10,6 +10,8 @@ dev:
     projectId: my-project-id
 ```
 
+Note: if you use `glcloud auth application-default login`, you don't need to set `pubSubCredential` at env file!
+
 Inject in your desired class:
 ```typescript
 import { PubSubHandler } from '@roit/roit-queues'

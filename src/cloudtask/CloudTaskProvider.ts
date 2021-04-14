@@ -8,16 +8,13 @@ import ms = require("ms");
 
 export class CloudTaskProvider {
     private instance: CloudTasksClient
-    private serviceAccountEmail: string
     private projectId: string
 
     constructor() {
         const credentialPath = Environment.getProperty('cloudTaskCredential')
+        this.projectId = Environment.getProperty('projectId')
         if (credentialPath) {
-            const projectId = Environment.getProperty('projectId')
             const credential = require(credentialPath)
-            this.projectId = projectId
-            this.serviceAccountEmail = credential.client_email
             this.instance = new CloudTasksClient({
                 credentials: credential
             })
@@ -29,7 +26,7 @@ export class CloudTaskProvider {
     async createTask(taskOptions: TaskConfiguration): Promise<google.cloud.tasks.v2.ITask> {
         const { region, queue } = taskOptions
         const seconds = this.buildScheduleTime(taskOptions)
-        const task = new Task(taskOptions, seconds, this.serviceAccountEmail) as google.cloud.tasks.v2.ITask
+        const task = new Task(taskOptions, seconds) as google.cloud.tasks.v2.ITask
         const parent = this.instance.queuePath(this.projectId, region, queue)
         const [response] = await this.instance.createTask({ parent, task } as google.cloud.tasks.v2.ICreateTaskRequest)
         return response
