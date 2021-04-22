@@ -13,6 +13,9 @@ export class Task {
         if(taskOptions.body) {
             this.httpRequest.body = Buffer.from(JSON.stringify(taskOptions.body)).toString('base64')
         }
+        if(taskOptions?.auth?.oidcToken?.serviceAccountEmail) {
+            this.httpRequest.oidcToken.serviceAccountEmail = taskOptions.auth.oidcToken.serviceAccountEmail
+        }
     }
 }
 
@@ -23,6 +26,9 @@ class HttpRequest {
     url: string
     body: string
     headers: unknown
+    oidcToken: {
+        serviceAccountEmail: string
+    }
 }
 
 class ScheduleTime {
