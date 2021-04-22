@@ -13,4 +13,9 @@ export class TaskConfiguration {
     }
     headers?: unknown
     body?: unknown
+    auth?: {
+        oidcToken?: {
+            serviceAccountEmail?: string
+        }
+    }
 }

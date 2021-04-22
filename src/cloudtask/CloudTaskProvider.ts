@@ -4,7 +4,7 @@ import { Environment } from "roit-environment";
 import { Task } from "./Task";
 import { TaskConfiguration } from "./TaskConfiguration";
 import moment from "moment"
-import ms = require("ms");
+import ms from "ms"
 
 export class CloudTaskProvider {
     private instance: CloudTasksClient
