@@ -6,15 +6,22 @@ export class Task {
     scheduleTime: ScheduleTime = new ScheduleTime()
 
     constructor(taskOptions: TaskConfiguration, seconds: number) {
-        this.httpRequest.headers = taskOptions.headers
+        this.httpRequest.headers = taskOptions.headers || {}
         this.httpRequest.url = taskOptions.url
         this.httpRequest.httpMethod = taskOptions.httpMethod
         this.scheduleTime.seconds = seconds
         if(taskOptions.body) {
             this.httpRequest.body = Buffer.from(JSON.stringify(taskOptions.body)).toString('base64')
         }
+
+        if(!this.httpRequest.headers['Content-Type']) {
+            this.httpRequest.headers['Content-Type'] = 'application/json'
+        }
+        
         if(taskOptions?.auth?.oidcToken?.serviceAccountEmail) {
-            this.httpRequest.oidcToken.serviceAccountEmail = taskOptions.auth.oidcToken.serviceAccountEmail
+            this.httpRequest.oidcToken = {
+                serviceAccountEmail: taskOptions.auth.oidcToken.serviceAccountEmail
+            }
         }
     }
 }
@@ -25,7 +32,7 @@ class HttpRequest {
     httpMethod: string
     url: string
     body: string
-    headers: unknown
+    headers: any
     oidcToken: {
         serviceAccountEmail: string
     }
