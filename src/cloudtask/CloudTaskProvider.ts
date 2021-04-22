@@ -39,20 +39,20 @@ export class CloudTaskProvider {
 
     buildScheduleTime(taskOptions: TaskConfiguration): number {
         let seconds = 0
-        if(taskOptions.scheduleTime.executeAt) {
+        if(taskOptions?.scheduleTime?.executeAt) {
             const milliseconds = Number(ms(taskOptions.scheduleTime.executeAt))
             seconds = milliseconds / 1000
         }
-        if(taskOptions.scheduleTime.dateExecute) {
+        if(taskOptions?.scheduleTime?.dateExecute) {
             const now = moment(new Date())
             const dateExecute = moment(taskOptions.scheduleTime.dateExecute)
             const duration = moment.duration(dateExecute.diff(now))
             seconds = duration.asSeconds()
         }
-        if(taskOptions.scheduleTime.nanos) {
+        if(taskOptions?.scheduleTime?.nanos) {
             seconds = Number(taskOptions.scheduleTime.nanos / 1000000000)
         }
-        if(taskOptions.scheduleTime.seconds) {
+        if(taskOptions?.scheduleTime?.seconds) {
             seconds = taskOptions.scheduleTime.seconds
         }
 
