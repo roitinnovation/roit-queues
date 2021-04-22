@@ -10,7 +10,9 @@ export class Task {
         this.httpRequest.url = taskOptions.url
         this.httpRequest.httpMethod = taskOptions.httpMethod
         this.scheduleTime.seconds = seconds
-        this.httpRequest.body = Buffer.from(JSON.stringify(taskOptions.body)).toString('base64')
+        if(taskOptions.body) {
+            this.httpRequest.body = Buffer.from(JSON.stringify(taskOptions.body)).toString('base64')
+        }
     }
 }
 
