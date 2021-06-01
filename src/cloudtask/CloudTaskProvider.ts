@@ -32,8 +32,7 @@ export class CloudTaskProvider {
         return response
     }
 
-    async deleteTask(queue: string, task: string): Promise<void> {
-        const name = this.instance.queuePath(this.projectId, 'us-central1', `${queue}/tasks/${task}`)
+    async deleteTask(name: string): Promise<void> {
         await this.instance.deleteTask({ name })
     }
 
