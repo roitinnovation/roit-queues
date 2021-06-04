@@ -3,8 +3,8 @@ import { google } from "@google-cloud/tasks/build/protos/protos";
 import { Environment } from "roit-environment";
 import { Task } from "./Task";
 import { TaskConfiguration } from "./TaskConfiguration";
-import moment from "moment"
-import ms from "ms"
+import * as moment from "moment"
+const ms = require('ms')
 
 export class CloudTaskProvider {
     private instance: CloudTasksClient
