@@ -1,5 +1,5 @@
 
-export type HttpMethod = 'POST' | 'PUT' | 'GET' | 'PATCH'
+export type HttpMethod = 'POST' | 'PUT' | 'GET' | 'PATCH' | 'DELETE'
 export class TaskConfiguration {
     url: string
     httpMethod: HttpMethod = 'POST'
