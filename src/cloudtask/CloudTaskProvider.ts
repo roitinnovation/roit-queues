@@ -5,6 +5,8 @@ import { Task } from "./Task";
 import { TaskConfiguration } from "./TaskConfiguration";
 import * as moment from "moment"
 const ms = require('ms')
+import { newDate } from "@roit/roit-date"
+import { parseISO } from 'date-fns'
 
 export class CloudTaskProvider {
     private instance: CloudTasksClient
@@ -55,6 +57,6 @@ export class CloudTaskProvider {
             seconds = taskOptions.scheduleTime.seconds
         }
 
-        return seconds + Date.now() / 1000
+        return seconds + parseISO(newDate()).getTime() / 1000
     }
 }

@@ -11,6 +11,9 @@ export class TaskConfiguration {
         dateExecute?: string
         executeAt?: string
     }
+    createTime?: {
+        seconds?: number
+    }
     headers?: unknown
     body?: unknown
     auth?: {
