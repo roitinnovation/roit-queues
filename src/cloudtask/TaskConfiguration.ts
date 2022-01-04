@@ -10,6 +10,7 @@ export class TaskConfiguration {
         nanos?: number
         dateExecute?: string
         executeAt?: string
+        withTimeZone?: boolean
     }
     createTime?: {
         seconds?: number

@@ -1,6 +1,6 @@
 {
   "name": "@roit/roit-queues",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "repository": "github:roitinnovation/roit-queues",
