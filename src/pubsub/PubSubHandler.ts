@@ -2,6 +2,10 @@ import { PubSub } from '@google-cloud/pubsub'
 import { PublisherInterface } from "../interfaces/PublisherInterface"
 import { PubSubConfig } from './PubSubConfig'
 
+type Attributes = {
+    [index: string]: string;
+}
+
 export class PubSubHandler implements PublisherInterface {
 
     private readonly instance: PubSub
@@ -20,9 +24,9 @@ export class PubSubHandler implements PublisherInterface {
         return this.instance
     }
 
-    async publish(object: any, topicName: string): Promise<string> {
+    async publish(object: any, topicName: string, attributes?: Attributes): Promise<string> {
         const message = Buffer.from(JSON.stringify(object))
-        const messageId = await this.getInstance().topic(topicName).publish(message).catch(err => {
+        const messageId = await this.getInstance().topic(topicName).publish(message, attributes).catch(err => {
             console.error(err)
             throw new Error('Error in PubSub publish method.')
         }).then(response => {
