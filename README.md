@@ -27,7 +27,11 @@ const myObject = {
     // properties
 }
 
-const messageId = await this.pubSubHandler.publish(myObject, 'myTopic')
+const attributes = {
+    // properties
+}
+
+const messageId = await this.pubSubHandler.publish(myObject, 'myTopic', attributes)
 console.log(messageId) // outputs 234786275
 ```
 
