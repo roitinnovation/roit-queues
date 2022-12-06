@@ -7,7 +7,8 @@ In the `env.yaml` file add the `pubSubCredential{}` and `projectId` attributes, 
 ```yaml
 dev:
     pubSubCredential{5}: my-credential.json
-    projectId: my-project-id
+    firestore:
+        projectId: my-project-id
 ```
 
 Note: if you use `glcloud auth application-default login`, you don't need to set `pubSubCredential` at env file!
@@ -42,7 +43,8 @@ In the `env.yaml` file add the `cloudTaskCredencial{}` and `projectId` attribute
 ```yaml
 dev:
     cloudTaskCredential{5}: my-credential.json
-    projectId: my-project-id
+    firestore:
+        projectId: my-project-id
 ```
 
 Inject in your desired class:

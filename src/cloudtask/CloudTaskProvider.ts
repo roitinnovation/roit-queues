@@ -14,7 +14,7 @@ export class CloudTaskProvider {
 
     constructor() {
         const credentialPath = Environment.getProperty('cloudTaskCredential')
-        this.projectId = Environment.getProperty('projectId')
+        this.projectId = Environment.getProperty('firestore.projectId')
         if (credentialPath) {
             const credential = require(credentialPath)
             this.instance = new CloudTasksClient({
