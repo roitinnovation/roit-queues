@@ -9,8 +9,8 @@ export class PubSubConfig implements BrokerConfigInterface {
 
     constructor() {
         const credentialFile = Environment.getProperty('pubSubCredential')
+        this.projectId = Environment.getProperty('firestore.projectId')
         if (credentialFile) {
-            this.projectId = Environment.getProperty('firestore.projectId')
             this.credentials = require(credentialFile)
         }
     }
