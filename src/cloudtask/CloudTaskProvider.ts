@@ -13,14 +13,13 @@ export class CloudTaskProvider {
     private projectId: string
 
     constructor() {
-        const credentialPath = Environment.getProperty('cloudTaskCredential')
         this.projectId = Environment.getProperty('firestore.projectId')
-        if (credentialPath) {
-            const credential = require(credentialPath)
+        if (this.projectId) {
             this.instance = new CloudTasksClient({
-                credentials: credential
+                projectId: this.projectId
             })
         } else {
+            console.warn(`ProjectId invalid, declare property firestore.projectId in env.yaml`)
             this.instance = new CloudTasksClient()
         }
     }

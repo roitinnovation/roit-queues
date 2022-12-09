@@ -1,6 +1,6 @@
 import { PubSub } from '@google-cloud/pubsub'
 import { PublisherInterface } from "../interfaces/PublisherInterface"
-import { PubSubConfig } from './PubSubConfig'
+import { Environment } from 'roit-environment';
 
 type Attributes = {
     [index: string]: string;
@@ -8,14 +8,16 @@ type Attributes = {
 
 export class PubSubHandler implements PublisherInterface {
 
-    private readonly instance: PubSub
-    private readonly pubSubConfig: PubSubConfig = new PubSubConfig()
+    private instance: PubSub
 
     constructor() {
-        const config = this.pubSubConfig.getConfig()
-        if (config) {
-            this.instance = new PubSub(config)
+        const projectId = Environment.getProperty('firestore.projectId')
+        if (projectId) {
+            this.instance = new PubSub({
+                projectId
+            })
         } else {
+            console.warn(`ProjectId invalid, declare property firestore.projectId in env.yaml`)
             this.instance = new PubSub()
         }
     }
