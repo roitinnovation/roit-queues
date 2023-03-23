@@ -13,7 +13,9 @@ export class CloudTaskProvider {
     private projectId: string
 
     constructor() {
-        this.projectId = Environment.getProperty('firestore.projectId')
+        this.projectId = Environment.getProperty('firestore.projectId') ||
+            Environment.getProperty('projectId') ||
+            Environment.systemProperty('PROJECT_ID')
         if (this.projectId) {
             this.instance = new CloudTasksClient({
                 projectId: this.projectId
